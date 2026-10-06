@@ -15,7 +15,7 @@ age_after_4_years = age + 4
 hours_for_4_weeks = study_hours * 4
 hours_per_day = study_hours / 7
 print()
-print("Карточка студента")
+print("Карточка студен4114141а")
 print(f"Имя и фамилия: {name} {surname}")
 print(f"Группа: {group}")
 print(f"Город: {city}")
