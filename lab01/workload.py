@@ -1,41 +1,35 @@
-# Запрос данных
-
-# region
-
-subject1 = input("Введите название 1-го предмета: ")
-lessons1 = int(input(f"Количество занятий в неделю по предмету '{subject1}': "))
-duration1 = int(input(f"Продолжительность одного занятия по предмету '{subject1}' (в минутах): "))
-subject2 = input("Введите название 2-го предмета: ")
+subject1 = input("Введите название первого предмета: ")
+lessons1 = int(input(f"Количество занятий в неделю по предмету '{subject1}':  "))
+if lessons1 < 0:
+    print("Ошибка: Количество занятий не может быть отрицательным.")
+duration1 = int(input(f"Продолжительность одного занятия по предмету '{subject1}' в минутах: "))
+if duration1 <= 0:
+    print("Ошибка: Продолжительность занятия должна быть положительной")
+subject2 = input("Введите название второго предмета: ")
 lessons2 = int(input(f"Количество занятий в неделю по предмету '{subject2}': "))
-duration2 = int(input(f"Продолжительность одного занятия по предмету '{subject2}' (в минутах): "))
-available_hours = float(input(f"Введите доступное время на неделю в часах: "))
+if lessons2 < 0:
+    print("Ошибка: Количество занятий не может быть отрицательным.")
+duration2 = int(input(f"Продолжительность одного занятия по предмету '{subject2}' в минутах: "))
+if duration2 <= 0:
+    print("Ошибка: Продолжительность занятия должна быть положительной.")
+time_available = float(input("Введите количество часов, доступных для подготовки в неделю: "))
+time1 = lessons1 * duration1
+time2 = lessons2 * duration2
+total_minutes = time1 + time2
+total_hours = total_minutes / 60
+free_hours = time_available - total_hours
+four_weeks= total_hours * 4
+if time_available < total_hours:
+    print("Недостаточно времени для подготовки по обоим предметам.")
+else: 
+    print ()
+    print("Учебная нагрузка по предметам:")
+    print(f"{subject1}: {time1} минут")
+    print(f"{subject2}: {time2} минут")
+    print(f"Общее количество минут подготовки: {total_minutes} минут")
+    print(f"Общая учебная нагрузка: {total_hours:.2f} часов")
+print(f"Свободное время: {free_hours:.2f} часов")
+print(f"Учебная нагрузка за 4 недели: {four_weeks:.2f} часов")
 
-# endregion
 
-# Вычисления
 
-# region
-
-time_sub1_min = lessons1 * duration1
-time_sub2_min = lessons2 * duration2
-total_workload_min = time_sub1_min + time_sub2_min
-total_workload_hours = total_workload_min / 60
-free_time_hours = available_hours - total_workload_hours
-workload_4_weeks_hours = total_workload_hours * 4
-
-# endregion
-
-# Вывод результатов
-
-# region
-
-print("\n" + "="*40)
-print("           АНАЛИЗ УЧЕБНОЙ НАГРУЗКИ           ")
-print("="*40)
-print(f"Время на предмет '{subject1}': {time_sub1_min} мин.")
-print(f"Время на предмет '{subject2}': {time_sub2_min} min.")
-print("-"*40)
-print(f"Общая нагрузка за неделю: {total_workload_min} мин. ({total_workload_hours:.2f} ч.)")
-print(f"Остаток свободного времени: {free_time_hours:.2f} ч.")
-print(f"Общая нагрузка за 4 недели: {workload_4_weeks_hours:.2f} ч.")
-print("="*40)
